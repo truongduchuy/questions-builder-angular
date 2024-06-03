@@ -1,0 +1,34 @@
+<div class="add-question-container">
+    <div class="header">
+        <h3>Add a New Question</h3>
+        <button type="button" class="close-button" (click)="dialogRef.close()">X</button>
+    </div>
+
+    <form>
+        <div class="answer-types">
+            <div [class]="formModal.answerType === answerType.CheckList ? 'selected' : ''" (click)="toggleAnswerType()">
+                Checkbox List</div>
+        </div>
+        <input type="text" [(ngModel)]="formModal.label" name="label" placeholder="Type Question Here" />
+        @if(formModal.answerType === answerType.CheckList) {
+        <div class="answer-options">
+            @for(answerOption of formModal.answerOptions; track trackByFn; let i = $index) {
+            <input type="text" [(ngModel)]="formModal.answerOptions[i]" name="answerOption{{i}}"
+                placeholder="Add Answer Option" />
+            }
+        </div>
+        <button type="button" (click)="addAnotherAnswer()" class="btn-add">Add another answer</button>
+        <div class="option">
+            <input type="checkbox" id="allowOtherAnswer" name="allowOtherAnswer"
+                [(ngModel)]="formModal.allowOtherAnswer">
+            <label for="allowOtherAnswer">Allow user to specify their own answer</label>
+        </div>
+        }
+        <div class="option">
+            <input type="checkbox" id="required" name="required" [(ngModel)]="formModal.required">
+            <label for="required">This field is required</label>
+        </div>
+
+        <button type="button" class="submit-btn" [disabled]="isFormInvalid" (click)="submit()">Submit</button>
+    </form>
+</div>

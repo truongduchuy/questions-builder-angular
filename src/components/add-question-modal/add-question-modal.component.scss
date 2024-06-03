@@ -1,0 +1,46 @@
+.add-question-container {
+    padding: 10px 12px;
+}
+
+.answer-types {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 4px;
+
+    >div {
+        background-color: lightgray;
+        color: black;
+        padding: 6px 8px;
+        cursor: pointer;
+
+        &.selected {
+            background-color: #007bff;
+            color: white;
+        }
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submit-btn {
+    display: block;
+    margin-left: auto;
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-block: 4px;
+}
+
+form input[type="text"] {
+    width: 100%;
+    padding: 6px 8px;
+    box-sizing: border-box;
+}

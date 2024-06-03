@@ -1,0 +1,39 @@
+<form [formGroup]="form">
+    <div class="questions" formArrayName="questions">
+        @for(question of questions.controls; track question.value.label; let i = $index) {
+        <div class="question" [formGroupName]="i">
+            <div class="question__title">{{ question.value.label }} {{question.value.required ? '*' : ''}}</div>
+            @if(question.value.answerType === answerType.Textarea) {
+            <textarea [id]="'question' + i" formControlName="answer"></textarea>
+            }
+            @else {
+            <div class="question__checkList">
+                <div formArrayName="options">
+                    @for(item of question.value.options; track item.option; let j = $index) {
+                    <div class="option" [formGroupName]="j">
+                        <input type="checkbox" [id]="'option' + i + j" formControlName="selected">
+                        <label [for]="'option' + i + j">{{ item.option }}</label>
+                    </div>
+                    }
+                </div>
+                @if(question.value.allowOtherAnswer) {
+                <div class="option">
+                    <input type="checkbox" [id]="'option' + i + 'other'" formControlName="other">
+                    <label [for]="'option' + i + 'other'">Other</label>
+
+                    @if(question.value.other) {
+                    <input type="text" [id]="'option' + i + 'otherText'" formControlName="otherText">
+                    }
+                </div>
+                }
+            </div>
+            }
+        </div>
+        }
+    </div>
+    <button type="button" (click)="addNewQuestion()" class="btn-add">Add New Question</button>
+    @if(questions.controls.length > 0) {
+    <button type="button" (click)="reviewAnswers()" class="btn-review" [disabled]="isFormInvalid">Review my answers
+        ></button>
+    }
+</form>

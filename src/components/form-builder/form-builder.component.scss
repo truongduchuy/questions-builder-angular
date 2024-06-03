@@ -1,0 +1,52 @@
+form {
+    max-width: 350px;
+    border: 1px solid black;
+    padding: 12px;
+
+    .questions {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        margin-bottom: 8px;
+
+        .question {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            &__title {
+                font-weight: 600;
+            }
+
+            textarea {
+                min-height: 50px;
+                max-width: 100%;
+            }
+
+            &__checkList {
+                .option {
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                }
+
+                label {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .btn-add {
+        border: none;
+        background: none;
+        text-decoration: underline;
+        margin-bottom: 8px;
+    }
+
+    .btn-review {
+        padding: 8px;
+        display: block;
+        margin-left: auto;
+    }
+}

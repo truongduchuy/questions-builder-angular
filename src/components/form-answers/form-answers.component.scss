@@ -1,0 +1,27 @@
+.form-answers {
+    max-width: 350px;
+    border: 1px solid black;
+    padding: 12px;
+
+    ul {
+        list-style-type: none;
+        margin-left: 8px;
+        padding: 0;
+    }
+
+    .question {
+        font-weight: 600;
+    }
+
+    .answer,
+    ul {
+        font-size: 14px;
+    }
+
+    button {
+        border: none;
+        background: none;
+        text-decoration: underline;
+        margin-top: 8px;
+    }
+}

@@ -1,0 +1,32 @@
+<div class="form-answers">
+    @for(question of questions; track question.label; let i = $index) {
+    <div>
+        <div class="question">{{ question.label }}</div>
+
+        @if(question.answerType === answerType.Textarea) {
+        <div class="answer">
+            <p>{{ question.answer }}</p>
+        </div>
+        }
+        @else {
+        <ul>
+            @for(selectedOption of question.options; track selectedOption.option;
+            let j = $index) {
+            @if(selectedOption.selected) {
+            <li>
+                {{ selectedOption.option }}
+            </li>
+            }
+            }
+            @if(question.other && question.otherText) {
+            <li>
+                Other - {{ question.otherText }}
+            </li>
+            }
+        </ul>
+        }
+
+    </div>
+    }
+    <button (click)="goBack()">Back to Forms Builder</button>
+</div>
